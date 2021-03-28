@@ -1,0 +1,5 @@
+output_data/**/*.html
+*.jl
+log*.txt
+ou*.txt
+**/__pycache__
