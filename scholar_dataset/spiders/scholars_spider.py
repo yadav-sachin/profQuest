@@ -1,22 +1,40 @@
 import scrapy
+import os
 from scrapy.linkextractors import LinkExtractor
 from urllib.parse import parse_qs, urlparse
 from w3lib.url import add_or_replace_parameters
 from scrapy.exceptions import CloseSpider
+import re
 
-max_persons_per_institute = 30
-institute_person_count = {}
+max_persons_per_institute = 400
+# max_persons_per_institute = 40
+institute_remaining_count = {}
+institute_file_completed_list = []
 
 class ScholarsSpider(scrapy.Spider):
     name = 'scholars'
     def start_requests(self):
         institutes_namelist = ["iit bombay", "iit delhi"]
-        institute_file_list = open('input_lists/{}.txt'.format(self.country), 'r')
-        institutes_namelist = institute_file_list.readlines()[:10]
+        if not os.path.isdir("data/output_data/{}".format(self.country)):
+            os.makedirs("data/output_data/{}".format(self.country))
+
+        institute_file_list = open('data/input_lists/{}.txt'.format(self.country), 'r')
+        institutes_namelist = institute_file_list.read().splitlines()
+        for index, name in enumerate(institutes_namelist):
+            institute_remaining_count[name] = max_persons_per_institute - 2 * index
+
+        if os.path.isfile('data/input_lists/{}_completed.txt'.format(self.country)):
+            with open('data/input_lists/{}_completed.txt'.format(self.country), 'r') as institute_file_completed_file:
+                institute_file_completed_list = institute_file_completed_file.read().splitlines()
+                for name in institute_file_completed_list:
+                    institute_remaining_count[name] = 0
+        else:
+            open('data/input_lists/{}_completed.txt'.format(self.country), 'a').close()
+
         institute_termlist = ["+".join(name.strip().split()) for name in institutes_namelist]
         start_urls = ['https://www.google.com/search?q={}+google+scholar'.format(term) for term in institute_termlist]
         for index, url in enumerate(start_urls):
-            yield scrapy.Request(url, meta={'institute_name': institutes_namelist[index].strip(), 'pageIndex': 0})
+            yield scrapy.Request(url, meta={'institute_name': institutes_namelist[index].strip()})
 
     # Currently at Google Search result page, need to go to the first google search result
     # https://www.google.com/search?q=iit+bombay+google+scholar
@@ -35,35 +53,42 @@ class ScholarsSpider(scrapy.Spider):
         org_link = response.xpath("//a[contains(@href, 'org') and contains(@class, 'gsc_prf_ila') and contains(@href, 'citations')]/@href").get()
         if org_link:
             orgID = parse_qs(urlparse(org_link).query)['org'][0]
-            if orgID not in institute_person_count:
-                institute_person_count[orgID] = 0
             yield response.follow(org_link, self.parse_institute_next_page_lvl2, meta={'institute_name': response.meta['institute_name'], 'orgID': orgID})
 
     # Currently at a page, which has the list of the faculties
     def parse_institute_next_page_lvl2(self, response):
         # https://scholar.google.com/citations?view_op=view_org&hl=en&org=15559271020991466530&after_author=s5UKAF3A__8J
-        orgID = response.meta['orgID']
-        
+        institute_name = response.meta['institute_name']
         person_links = response.xpath("//h3[contains(@class, 'gs_ai_name')]//a[contains(@href, 'citations') and contains(@href, 'user')]/@href").getall()
         for link in person_links:
-            if institute_person_count[orgID] < max_persons_per_institute:
-                yield response.follow(link, self.download_person_page, meta={'institute_name': response.meta['institute_name'], 'orgID': response.meta['orgID']})
-                institute_person_count[orgID] += 1
+            if institute_remaining_count[institute_name] > 0:
+                yield response.follow(link, self.download_person_page, meta={'institute_name': institute_name, 'orgID': response.meta['orgID']})
+                institute_remaining_count[institute_name] -= 1
             else:
-                print(response.meta['institute_name'], institute_person_count[orgID])
+                print(institute_name, institute_remaining_count[institute_name])
+                if institute_name not in institute_file_completed_list:
+                    f = open('data/input_lists/{}_completed.txt'.format(self.country), 'a')
+                    f.write(institute_name + "\n")
+                    f.close()
+                    institute_file_completed_list.append(institute_name)
         
-        next_page_after_authors =  response.css('button.gs_btnPR').xpath(".//@onclick").re("window.location='.*after_author\\\\x3d(.*)\\\\.*\\\\.*'")
-        if next_page_after_authors and institute_person_count[orgID] < max_persons_per_institute:
+        next_page_after_authors =  response.css('button.gs_btnPR').xpath(".//@onclick").re(r"window.location='.*after_author\\x3d(.*)\\.*\\.*'")
+        if next_page_after_authors and institute_remaining_count[institute_name] > 0:
             next_page_after_author = next_page_after_authors[0]
             next_page_link = add_or_replace_parameters(response.url, {"after_author": next_page_after_author})
             yield response.follow(next_page_link , self.parse_institute_next_page_lvl2, meta={'institute_name': response.meta['institute_name'], 'orgID': response.meta['orgID']})
         else:
-            print(response.meta['institute_name'], institute_person_count[orgID])
+            print(institute_name, institute_remaining_count[institute_name])
+            if institute_name not in institute_file_completed_list:
+                f = open('data/input_lists/{}_completed.txt'.format(self.country), 'a')
+                f.write(institute_name + "\n")
+                f.close()
+                institute_file_completed_list.append(institute_name)
 
     # On a person's page, ready to download
     def download_person_page(self, response):
         userID = parse_qs(urlparse(response.url).query)['user'][0]
-        filename = f'output_data/{self.country}/{userID}.html'
+        filename = f'data/output_data/{self.country}/{userID}.html'
         org_link = response.css("a.gsc_prf_ila::attr(href)").get()
         orgID = parse_qs(urlparse(org_link).query)['org'][0]
         name = response.css("div#gsc_prf_in::text").get()
@@ -81,4 +106,6 @@ class ScholarsSpider(scrapy.Spider):
             'homepage': homepage,
         }
         with open(filename, 'wb') as f:
-            f.write(response.body)
+            html_data = re.sub(b"<style>[.\S\s]*?</style>", b"", response.body, re.DOTALL)
+            html_data = re.sub(b"<script>[.\S\s]*?/script>", b"", html_data, re.DOTALL)
+            f.write(html_data)

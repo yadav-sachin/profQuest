@@ -1,5 +1,13 @@
-output_data/**/*.html
+# Data
+**/*.html
 *.jl
+
+# Log files
 log*.txt
+
+# Output Files
 ou*.txt
+
+# Cache Files
 **/__pycache__
+**/.vscode
