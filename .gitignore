@@ -11,3 +11,9 @@ ou*.txt
 # Cache Files
 **/__pycache__
 **/.vscode
+
+# SHUB Build Files
+build
+
+# Scrapyd DBS 
+dbs

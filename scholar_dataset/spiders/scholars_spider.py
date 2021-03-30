@@ -4,10 +4,9 @@ from scrapy.linkextractors import LinkExtractor
 from urllib.parse import parse_qs, urlparse
 from w3lib.url import add_or_replace_parameters
 from scrapy.exceptions import CloseSpider
-import re
 
-max_persons_per_institute = 400
-# max_persons_per_institute = 40
+max_persons_per_institute = 40
+# max_persons_per_institute = 400 #uncomment in deploy
 institute_remaining_count = {}
 institute_file_completed_list = []
 
@@ -19,7 +18,7 @@ class ScholarsSpider(scrapy.Spider):
             os.makedirs("data/output_data/{}".format(self.country))
 
         institute_file_list = open('data/input_lists/{}.txt'.format(self.country), 'r')
-        institutes_namelist = institute_file_list.read().splitlines()
+        institutes_namelist = institute_file_list.read().splitlines()[:10]  #remove the :10 in deployment
         for index, name in enumerate(institutes_namelist):
             institute_remaining_count[name] = max_persons_per_institute - 2 * index
 
