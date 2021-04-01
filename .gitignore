@@ -1,6 +1,7 @@
 # Data
 **/*.html
 *.jl
+**/*.zip
 
 # Log files
 log*.txt
@@ -17,3 +18,6 @@ build
 
 # Scrapyd DBS 
 dbs
+
+# Scraproxy Conf
+conf?.json

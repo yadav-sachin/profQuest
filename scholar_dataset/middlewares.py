@@ -113,27 +113,27 @@ class ScholarDatasetDownloaderMiddleware:
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-class UserHeadersMiddleware(object):
-    """This middleware allows spiders to override the request headers"""
+# class UserHeadersMiddleware(object):
+#     """This middleware allows spiders to override the request headers"""
 
-    def __init__(self, request_headers):
-        self.request_headers = request_headers
-        if self.request_headers:
-            self.request_headers_cycle = cycle(self.request_headers)
+#     def __init__(self, request_headers):
+#         self.request_headers = request_headers
+#         if self.request_headers:
+#             self.request_headers_cycle = cycle(self.request_headers)
 
-    @classmethod
-    def from_crawler(cls, crawler):
-        o = cls(crawler.settings['HEADERS_LIST'])
-        crawler.signals.connect(o.spider_opened, signal=signals.spider_opened)
-        return o
+#     @classmethod
+#     def from_crawler(cls, crawler):
+#         o = cls(crawler.settings['HEADERS_LIST'])
+#         crawler.signals.connect(o.spider_opened, signal=signals.spider_opened)
+#         return o
 
-    def spider_opened(self, spider):
-        self.request_headers = getattr(spider, 'request_headers', self.request_headers)
-        if self.request_headers:
-            self.request_headers_cycle = cycle(self.request_headers)
-        logger.info('Load {} request_headers from settings.'.format(
-            len(self.request_headers) if self.request_headers else 0))
+#     def spider_opened(self, spider):
+#         self.request_headers = getattr(spider, 'request_headers', self.request_headers)
+#         if self.request_headers:
+#             self.request_headers_cycle = cycle(self.request_headers)
+#         logger.info('Load {} request_headers from settings.'.format(
+#             len(self.request_headers) if self.request_headers else 0))
 
-    def process_request(self, request, spider):
-        if self.request_headers:
-            request.headers.update(next(self.request_headers_cycle))
+#     def process_request(self, request, spider):
+#         if self.request_headers:
+#             request.headers.update(next(self.request_headers_cycle))

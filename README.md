@@ -40,3 +40,30 @@ cat oup_temp.jl >> oup_america.jl ; rm -rf oup_temp.jl log_temp.txt; scrapy craw
 ### After running:
 - Remove the duplicate records in the output json lines.
 
+
+
+## Run Scrapoxy:
+### Installation:
+```
+sudo apt-get install build-essential
+sudo npm install -g scrapoxy
+pip3 install scrapoxy
+```
+
+### Instructions:
+- Generate "accessKeyId" and "secretAccessKey", from AWS credentials.
+- Put those values in the `conf.json` file.
+
+- Run 
+```bash
+scrapoxy start conf.json -d   
+```
+
+In other terminal, run
+```bash
+scrapy crawl scholars -o oup_america.jl > output.txt -a country=america --logfile log.txt
+```
+
+- Can access the Scrapoxy GUI working at: `localhost:8889/`. Password is set to "jujutsu". (Yes, Its from that over-hyped dope anime Jujutsu Kaisen).
+- The region is set to Mumbai in conf.json.
+- Currently max instances are set to 3, change as per your aws credits.
