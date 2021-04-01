@@ -51,7 +51,7 @@ COOKIES_ENABLED = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'scholar_dataset.middlewares.UserHeadersMiddleware': 500,
+    'scholar_dataset.middlewares.UserHeadersMiddleware': 110,
 }
 
 HEADERS_LIST = [

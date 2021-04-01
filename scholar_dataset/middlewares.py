@@ -5,6 +5,9 @@
 import logging
 from itertools import cycle
 from scrapy import signals
+from scrapy.downloadermiddlewares.retry import RetryMiddleware
+from scrapy.utils.response import response_status_message
+from time import sleep
 
 logger = logging.getLogger(__name__)
 
@@ -134,4 +137,3 @@ class UserHeadersMiddleware(object):
     def process_request(self, request, spider):
         if self.request_headers:
             request.headers.update(next(self.request_headers_cycle))
-

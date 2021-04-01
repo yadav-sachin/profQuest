@@ -1,3 +1,0 @@
-[scrapy]
-settings = scholar_dataset.settings
-
