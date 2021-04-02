@@ -31,9 +31,9 @@ class ScholarsSpider(scrapy.Spider):
             open('data/input_lists/{}_completed.txt'.format(self.country), 'a').close()
 
 
-        if os.path.isfile('data/input_lists/{}_not_found.txt'.format(self.country)):
-            with open('data/input_lists/{}_not_found.txt'.format(self.country), 'r') as institute_file_not_found_file:
-                    institute_file_completed_list.extend(institute_file_not_found_file.read().splitlines())
+        # if os.path.isfile('data/input_lists/{}_not_found.txt'.format(self.country)):
+        #     with open('data/input_lists/{}_not_found.txt'.format(self.country), 'r') as institute_file_not_found_file:
+        #             institute_file_completed_list.extend(institute_file_not_found_file.read().splitlines())
 
         for name in institute_file_completed_list:
             institute_remaining_count[name] = 0
@@ -51,7 +51,7 @@ class ScholarsSpider(scrapy.Spider):
     def parse(self, response):
         institute_name = response.meta['institute_name']
         page_links = response.xpath("//a[contains(@href, 'citations') and contains(@href, 'user')  and not(contains(@href, 'cache')) ]/@href").getall()
-        max_try_count = min(len(page_links), 5)
+        max_try_count = min(len(page_links), 8)
         try_count = 1
         if not page_links:
             if institute_name not in institute_found_list:
