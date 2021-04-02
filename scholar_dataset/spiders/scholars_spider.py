@@ -21,6 +21,7 @@ class ScholarsSpider(scrapy.Spider):
 
         institute_file_list = open('data/input_lists/{}.txt'.format(self.country), 'r')
         institutes_namelist = institute_file_list.read().splitlines()  #remove the :10 in deployment
+        institutes_namelist = [name.strip() for name in institutes_namelist]
         for index, name in enumerate(institutes_namelist):
             institute_remaining_count[name] = max_persons_per_institute - 2 * index
 
