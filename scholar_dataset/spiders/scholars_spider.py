@@ -29,6 +29,7 @@ class ScholarsSpider(scrapy.Spider):
                 institute_file_completed_list = institute_file_completed_file.read().splitlines()
         else:
             open('data/input_lists/{}_completed.txt'.format(self.country), 'a').close()
+            institute_file_completed_list = []
 
 
         if os.path.isfile('data/input_lists/{}_not_found.txt'.format(self.country)):
