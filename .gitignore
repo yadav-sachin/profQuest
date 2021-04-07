@@ -17,3 +17,7 @@ build
 
 # Scrapyd DBS 
 dbs
+
+*.dccache
+
+conf.json

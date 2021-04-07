@@ -32,9 +32,9 @@ class ScholarsSpider(scrapy.Spider):
             institute_file_completed_list = []
 
 
-        if os.path.isfile('data/input_lists/{}_not_found.txt'.format(self.country)):
-            with open('data/input_lists/{}_not_found.txt'.format(self.country), 'r') as institute_file_not_found_file:
-                    institute_file_completed_list.extend(institute_file_not_found_file.read().splitlines())
+#        if os.path.isfile('data/input_lists/{}_not_found.txt'.format(self.country)):
+#            with open('data/input_lists/{}_not_found.txt'.format(self.country), 'r') as institute_file_not_found_file:
+#                    institute_file_completed_list.extend(institute_file_not_found_file.read().splitlines())
 
         for name in institute_file_completed_list:
             institute_remaining_count[name] = 0
