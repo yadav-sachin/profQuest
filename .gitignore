@@ -1,6 +1,6 @@
 # Data
 **/*.html
-*.jl
+# *.jl
 
 # Log files
 log*.txt
