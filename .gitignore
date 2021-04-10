@@ -17,3 +17,7 @@ build
 
 # Scrapyd DBS 
 dbs
+
+# Scrapoxy Conf
+conf?.json
+
