@@ -81,7 +81,8 @@ with jsonlines.open('oup_{}.jl'.format(country)) as reader:
                         json_paper_list.append(paper_dict)
                 obj['papers'] = json_paper_list
                 # print(papers)
-                print(obj)
+                json_obj = json.dumps(obj)
+                print(json_obj)
                 # if curr_count == max_count:
                 #     break
                 curr_count += 1

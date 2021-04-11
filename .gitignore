@@ -1,6 +1,7 @@
 # Data
 **/*.html
-*.jl
+*oup*.jl
+data_india.jl
 
 # Log files
 log*.txt
@@ -20,4 +21,8 @@ dbs
 
 # Scrapoxy Conf
 conf?.json
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
 
