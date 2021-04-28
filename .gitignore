@@ -26,3 +26,5 @@ conf?.json
 .ipynb_checkpoints
 
 
+# Pickle Dump Files
+**/*.pkl
