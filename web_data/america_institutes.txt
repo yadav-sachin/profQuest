@@ -1,0 +1,200 @@
+Massachusetts Institute of Technology (MIT)    
+Stanford University    
+Harvard University    
+California Institute of Technology  Caltech    
+University of California, Berkeley    
+Yale University    
+Princeton University    
+University of Chicago    
+Johns Hopkins University    
+University of Pennsylvania    
+University of California, Los Angeles (UCLA)    
+Columbia University    
+Cornell University    
+Duke University    
+University of Michigan    
+Northwestern University    
+New York University    
+Carnegie Mellon University    
+University of Washington    
+University of California, San Diego    
+Georgia Institute of Technology    
+University of Texas at Austin    
+University of Illinois at Urbana Champaign    
+University of Wisconsin Madison    
+Washington University in St. Louis    
+University of Southern California    
+University of North Carolina Chapel Hill    
+Brown University    
+University of California, Davis    
+University of California, Santa Barbara    
+The Ohio State University    
+Emory University    
+University of Minnesota    
+University of Maryland    
+Purdue University    
+University of California, Irvine (UCI)    
+Dartmouth College    
+Michigan State University    
+Vanderbilt University    
+Pennsylvania State University    
+University of Virginia    
+Georgetown University    
+Case Western Reserve University    
+Rice University    
+University of Arizona    
+University of Colorado at Boulder    
+University of Pittsburgh    
+Indiana University Bloomington    
+University of Rochester    
+University of Florida    
+Tufts University    
+Rutgers University    
+The University of Alabama at Birmingham    
+University of Notre Dame    
+Boston University    
+Arizona State University    
+George Washington University    
+Texas A&M University    
+Brandeis University    
+Howard University    
+The University of Iowa    
+University of California, Santa Cruz    
+University of Hawaii at Manoa    
+University of Massachusetts Boston    
+University of South Florida    
+University of Utah    
+Virginia Tech    
+College of William & Mary    
+Florida State University    
+George Mason University    
+Nova Southeastern University    
+Oregon Health & Science University    
+The University of New Mexico    
+University at Albany    
+University at Buffalo    
+University of California, Riverside    
+University of Cincinnati    
+University of Illinois at Chicago    
+Wake Forest University    
+Boston College    
+Illinois Institute of Technology    
+North Carolina State University    
+Rush University    
+Stony Brook University    
+Syracuse University    
+Temple University    
+Tulane University    
+University of California, Merced    
+University of Delaware    
+University of Oregon    
+University of Tennessee Knoxville    
+University of Texas at Dallas    
+Washington State University    
+Drexel University    
+University of Kansas    
+Wayne State University    
+University of Denver    
+American University Washington DC    
+Clark University    
+Colorado School of Mines 
+ Colorado State University    
+Florida International University    
+Georgia State University    
+Iowa State University    
+Missouri University of Science and Technology    
+Oklahoma State University    
+Oregon State University    
+University of Alaska Fairbanks    
+University of Connecticut    
+University of Georgia    
+University of Kentucky    
+University of Missouri  Columbia    
+University of NebraskaLincoln    
+University of South Carolina    
+University of Tulsa    
+Binghamton University    
+Hofstra University    
+Louisiana State University    
+New Jersey Institute of Technology    
+Northern Arizona University    
+Rensselaer Polytechnic Institute    
+Stevens Institute of Technology    
+The University of Texas at San Antonio    
+University of Houston    
+University of Nebraska Medical Center    
+Montana State University    
+Auburn University    
+Chapman University    
+Clemson University    
+Creighton University    
+Kansas State University    
+Lehigh University    
+New Mexico State University    
+Ohio University    
+San Diego State University    
+Texas Tech University    
+The University of Alabama    
+The University of Toledo    
+University of Alabama Huntsville    
+University of Arkansas    
+University of Central Florida    
+University of Idaho    
+University of Maryland Baltimore County (UMBC)    
+University of Missouri–St. Louis    
+University of Nevada, Las Vegas    
+University of North Carolina Greensboro    
+University of Rhode Island    
+University of Texas Arlington    
+University of Wisconsin Milwaukee    
+Western Washington University    
+Worcester Polytechnic Institute    
+University of Miami    
+Baylor University    
+Bowling Green State University    
+Florida Agricultural and Mechanical University    
+Florida Atlantic University    
+Florida Institute of Technology    
+Kent State University    
+Louisiana Tech University    
+Marquette University    
+Mississippi State University    
+Northeastern University    
+Old Dominion University    
+Portland State University    
+Rochester Institute of Technology    
+Southern Illinois University    
+The New School    
+University of Memphis    
+University of South Dakota    
+University of Texas El Paso    
+California State University Long Beach    
+East Carolina University    
+James Madison University    
+University of California, San Francisco    
+University of Minnesota Twin Cities    
+Rockefeller University    
+University of Texas Southwestern Medical Center    
+The University of Texas M. D. Anderson Cancer Center    
+Icahn School of Medicine at Mount Sinai    
+Mayo Medical School    
+Baylor College of Medicine    
+University of Massachusetts Amherst    
+University of Massachusetts Medical School  Worcester    
+University of Colorado Denver    
+University of Maryland Baltimore    
+Virginia Commonwealth University    
+Yeshiva University    
+Indiana University  Purdue University Indianapolis    
+Medical University of South Carolina    
+The University of Texas Health Science Center at Houston    
+The University of Vermont    
+University at Buffalo SUNY - School of Engineering and Applied Sciences    
+Brigham Young University    
+Graduate Center    
+Saint Louis University    
+The City College of New York    
+The University of Maine    
+The University of Texas Health Science Center at San Antonio    
+The University of Texas Medical Branch at Galveston    
+University of North Texas 

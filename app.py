@@ -8,9 +8,13 @@ def home():
     countries_list = []
     with open("web_data/countries_list.txt") as country_file:
         countries_list = [line.strip() for line in country_file]
-    return render_template("index.html", countries = countries_list)
+    institutions_list = []
+    for country in countries_list:
+        with open("web_data/{}_institutes.txt".format(country)) as institutes_file:
+            institutions_list.extend([line.strip() for line in institutes_file])
+    return render_template("index.html", countries = countries_list, institutes = institutions_list)
 
-@app.route("/search/subject")
+@app.route("/search")
 def search_subject():
     if 'q' in request.args: 
         query = request.args['q']
