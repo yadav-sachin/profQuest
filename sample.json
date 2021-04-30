@@ -1,1 +1,226 @@
-{"country": "india", "org": "10153116334818526581", "institute": "National Institute of Technology Agartala", "name": "A K Chakraborty", "user": "cZxrxCMAAAAJ", "homepage": "Not Found", "scholarPage": "https://scholar.google.co.in/citations?user=cZxrxCMAAAAJ&hl=en", "imgLink": "https://scholar.google.co.in/citations/images/avatar_scholar_128.png", "verifiedEmail": true, "subjects": ["Power System", "Smart Grid"], "yearCitations": ["{\"year\": 2009, \"citations\": 3}", "{\"year\": 2010, \"citations\": 9}", "{\"year\": 2011, \"citations\": 14}", "{\"year\": 2012, \"citations\": 17}", "{\"year\": 2013, \"citations\": 32}", "{\"year\": 2014, \"citations\": 26}", "{\"year\": 2015, \"citations\": 49}", "{\"year\": 2016, \"citations\": 67}", "{\"year\": 2017, \"citations\": 62}", "{\"year\": 2018, \"citations\": 92}", "{\"year\": 2019, \"citations\": 94}", "{\"year\": 2020, \"citations\": 129}", "{\"year\": 2021, \"citations\": 42}"], "citationsAll": "645", "citations2016": "487", "h-indexAll": "13", "h-index2016": "10", "i10-indexAll": "17", "i10-index2016": "11", "papers": [{"title": "Effects of ambient temperature and wind speed on performance of monocrystalline solar photovoltaic module in Tripura, India", "authors": "T Bhattacharya, AK Chakraborty, K Pal", "conference": "Journal of Solar Energy 2014", "citations": 68, "year": 2014}, {"title": "Solution of optimal power flow using non dominated sorting multi objective opposition based gravitational search algorithm", "authors": "AR Bhowmik, AK Chakraborty", "conference": "International Journal of Electrical Power & Energy Systems 64, 1237-1250", "citations": 62, "year": 2015}, {"title": "Polarization encoded all-optical quaternary R\u2013S flip-flop using binary latch", "authors": "T Chattopadhyay, JN Roy, AK Chakraborty", "conference": "Optics Communications 282 (7), 1287-1293", "citations": 56, "year": 2009}, {"title": "Solution of optimal power flow using nondominated sorting multi objective gravitational search algorithm", "authors": "AR Bhowmik, AK Chakraborty", "conference": "International Journal of Electrical Power & Energy Systems 62, 323-334", "citations": 49, "year": 2014}, {"title": "Solution of short-term hydrothermal scheduling using sine cosine algorithm", "authors": "S Das, A Bhattacharya, AK Chakraborty", "conference": "Soft Computing 22 (19), 6409-6427", "citations": 37, "year": 2018}, {"title": "Performance analysis and comparison of various FACTS devices in power system", "authors": "A Saha, P Das, AK Chakraborty", "conference": "International Journal of Computer Applications 46 (15), 0975-0887", "citations": 36, "year": 2012}, {"title": "Active power loss minimization with FACTS devices using SA/PSO techniques.", "authors": "S Majumdar, AK Chakraborty, PK Chattopadhyay", "conference": "2009 International Conference on Power Systems, 1-5", "citations": 21, "year": 2009}, {"title": "Optimal location of UPFC based on PSO algorithm considering active power loss minimization", "authors": "AR Bhowmik, AK Chakraborty, P Das", "conference": "2012 IEEE Fifth Power India Conference, 1-5", "citations": 17, "year": 2012}, {"title": "Fixed head short-term hydrothermal scheduling in presence of solar and wind power", "authors": "S Das, A Bhattacharya, AK Chakraborty", "conference": "Energy strategy reviews 22, 47-60", "citations": 15, "year": 2018}, {"title": "Water evaporation algorithm: a new metaheuristic algorithm towards the solution of optimal power flow", "authors": "A Saha, P Das, AK Chakraborty", "conference": "Engineering Science and Technology, an International Journal 20 (6), 1540-1552", "citations": 15, "year": 2017}, {"title": "Quasi-reflected ions motion optimization algorithm for short-term hydrothermal scheduling", "authors": "S Das, A Bhattacharya, AK Chakraborty", "conference": "Neural Computing and Applications 29 (6), 123-149", "citations": 14, "year": 2018}, {"title": "Advanced metering infrastructure: Technology and challenges", "authors": "AK Chakraborty, N Sharma", "conference": "2016 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 1-5", "citations": 13, "year": 2016}, {"title": "Distribution and determinants of cytomegalovirus induced end organ disease/s among people living with HIV/AIDS in a poor resource setting: observation from India", "authors": "A Chakraborty, T Mahapatra, S Mahapatra, S Ansari, S Siddhanta, ...", "conference": "PloS one 10 (2), e0117466", "citations": 13, "year": 2015}, {"title": "Network analysis and synthesis", "authors": "SP Ghosh, AK Chakraborty", "conference": "Tata McGraw Hill", "citations": 13, "year": 2010}, {"title": "Neutral Current and Neutral Voltage in Three Phase Four Wire Distribution System of a Technical Institution", "authors": "N Dey, AK Chakraborty", "conference": "International Journal of Computer Applications 72 (3)", "citations": 10, "year": 2013}, {"title": "Congestion management in a deregulated power system by rescheduling of sensitive generators and load curtailment using PSO", "authors": "T Bhattacharjee, AK Chakraborty", "conference": "International Journal of Emerging Technology and Advanced Engineering 2 (3\u00a0\u2026", "citations": 10, "year": 2012}, {"title": "Zinc and vitamin A can minimise the severity of oral submucous fibrosis", "authors": "R Dhariwal, S Mukherjee, S Pattanayak, A Chakraborty, JG Ray, ...", "conference": "Case Reports 2010, bcr1020092348", "citations": 10, "year": 2010}, {"title": "Control of permanent magnet synchronous motor (pmsm) using vector control approach", "authors": "AK Chakraborty, N Sharma", "conference": "2016 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 1-5", "citations": 9, "year": 2016}, {"title": "Active line flow control of power system network with FACTS devices of choice using soft computing technique", "authors": "AK Chakraborty, S Majumdar, PK Chattopadhyay, C Nandi", "conference": "International Journal of Computer Applications 975, 8887", "citations": 9, "year": 2011}, {"title": "Computer simulation of the influence of shading on a solar photovoltaic array", "authors": "T Bhattacharya, AK Chakraborty, K Pal", "conference": "International Journal of Ambient Energy 38 (5), 525-533", "citations": 8, "year": 2017}]}
+{
+    "country": "india",
+    "org": "10153116334818526581",
+    "institute": "National Institute of Technology Agartala",
+    "name": "A K Chakraborty",
+    "user": "cZxrxCMAAAAJ",
+    "homepage": "Not Found",
+    "scholarPage": "https://scholar.google.co.in/citations?user=cZxrxCMAAAAJ&hl=en",
+    "imgLink": "https://scholar.google.co.in/citations/images/avatar_scholar_128.png",
+    "verifiedEmail": true,
+    "subjects": ["Power System", "Smart Grid"],
+    "yearCitations": ["{\"year\": 2009, \"citations\": 3}", "{\"year\": 2010, \"citations\": 9}", "{\"year\": 2011, \"citations\": 14}", "{\"year\": 2012, \"citations\": 17}", "{\"year\": 2013, \"citations\": 32}", "{\"year\": 2014, \"citations\": 26}", "{\"year\": 2015, \"citations\": 49}", "{\"year\": 2016, \"citations\": 67}", "{\"year\": 2017, \"citations\": 62}", "{\"year\": 2018, \"citations\": 92}", "{\"year\": 2019, \"citations\": 94}", "{\"year\": 2020, \"citations\": 129}", "{\"year\": 2021, \"citations\": 42}"],
+    "citationsAll": "645",
+    "citations2016": "487",
+    "h-indexAll": "13",
+    "h-index2016": "10",
+    "i10-indexAll": "17",
+    "i10-index2016": "11",
+    "papers": [{
+        "title": "Effects of ambient temperature and wind speed on performance of monocrystalline solar photovoltaic module in Tripura, India",
+        "authors": "T Bhattacharya, AK Chakraborty, K Pal",
+        "conference": "Journal of Solar Energy 2014",
+        "citations": 68,
+        "year": 2014
+    }, {
+        "title": "Solution of optimal power flow using non dominated sorting multi objective opposition based gravitational search algorithm",
+        "authors": "AR Bhowmik, AK Chakraborty",
+        "conference": "International Journal of Electrical Power & Energy Systems 64, 1237-1250",
+        "citations": 62,
+        "year": 2015
+    }, {
+        "title": "Polarization encoded all-optical quaternary R\u2013S flip-flop using binary latch",
+        "authors": "T Chattopadhyay, JN Roy, AK Chakraborty",
+        "conference": "Optics Communications 282 (7), 1287-1293",
+        "citations": 56,
+        "year": 2009
+    }, {
+        "title": "Solution of optimal power flow using nondominated sorting multi objective gravitational search algorithm",
+        "authors": "AR Bhowmik, AK Chakraborty",
+        "conference": "International Journal of Electrical Power & Energy Systems 62, 323-334",
+        "citations": 49,
+        "year": 2014
+    }, {
+        "title": "Solution of short-term hydrothermal scheduling using sine cosine algorithm",
+        "authors": "S Das, A Bhattacharya, AK Chakraborty",
+        "conference": "Soft Computing 22 (19), 6409-6427",
+        "citations": 37,
+        "year": 2018
+    }, {
+        "title": "Performance analysis and comparison of various FACTS devices in power system",
+        "authors": "A Saha, P Das, AK Chakraborty",
+        "conference": "International Journal of Computer Applications 46 (15), 0975-0887",
+        "citations": 36,
+        "year": 2012
+    }, {
+        "title": "Active power loss minimization with FACTS devices using SA/PSO techniques.",
+        "authors": "S Majumdar, AK Chakraborty, PK Chattopadhyay",
+        "conference": "2009 International Conference on Power Systems, 1-5",
+        "citations": 21,
+        "year": 2009
+    }, {
+        "title": "Optimal location of UPFC based on PSO algorithm considering active power loss minimization",
+        "authors": "AR Bhowmik, AK Chakraborty, P Das",
+        "conference": "2012 IEEE Fifth Power India Conference, 1-5",
+        "citations": 17,
+        "year": 2012
+    }, {
+        "title": "Fixed head short-term hydrothermal scheduling in presence of solar and wind power",
+        "authors": "S Das, A Bhattacharya, AK Chakraborty",
+        "conference": "Energy strategy reviews 22, 47-60",
+        "citations": 15,
+        "year": 2018
+    }, {
+        "title": "Water evaporation algorithm: a new metaheuristic algorithm towards the solution of optimal power flow",
+        "authors": "A Saha, P Das, AK Chakraborty",
+        "conference": "Engineering Science and Technology, an International Journal 20 (6), 1540-1552",
+        "citations": 15,
+        "year": 2017
+    }, {
+        "title": "Quasi-reflected ions motion optimization algorithm for short-term hydrothermal scheduling",
+        "authors": "S Das, A Bhattacharya, AK Chakraborty",
+        "conference": "Neural Computing and Applications 29 (6), 123-149",
+        "citations": 14,
+        "year": 2018
+    }, {
+        "title": "Advanced metering infrastructure: Technology and challenges",
+        "authors": "AK Chakraborty, N Sharma",
+        "conference": "2016 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 1-5",
+        "citations": 13,
+        "year": 2016
+    }, {
+        "title": "Distribution and determinants of cytomegalovirus induced end organ disease/s among people living with HIV/AIDS in a poor resource setting: observation from India",
+        "authors": "A Chakraborty, T Mahapatra, S Mahapatra, S Ansari, S Siddhanta, ...",
+        "conference": "PloS one 10 (2), e0117466",
+        "citations": 13,
+        "year": 2015
+    }, {
+        "title": "Network analysis and synthesis",
+        "authors": "SP Ghosh, AK Chakraborty",
+        "conference": "Tata McGraw Hill",
+        "citations": 13,
+        "year": 2010
+    }, {
+        "title": "Neutral Current and Neutral Voltage in Three Phase Four Wire Distribution System of a Technical Institution",
+        "authors": "N Dey, AK Chakraborty",
+        "conference": "International Journal of Computer Applications 72 (3)",
+        "citations": 10,
+        "year": 2013
+    }, {
+        "title": "Congestion management in a deregulated power system by rescheduling of sensitive generators and load curtailment using PSO",
+        "authors": "T Bhattacharjee, AK Chakraborty",
+        "conference": "International Journal of Emerging Technology and Advanced Engineering 2 (3\u00a0\u2026",
+        "citations": 10,
+        "year": 2012
+    }, {
+        "title": "Zinc and vitamin A can minimise the severity of oral submucous fibrosis",
+        "authors": "R Dhariwal, S Mukherjee, S Pattanayak, A Chakraborty, JG Ray, ...",
+        "conference": "Case Reports 2010, bcr1020092348",
+        "citations": 10,
+        "year": 2010
+    }, {
+        "title": "Control of permanent magnet synchronous motor (pmsm) using vector control approach",
+        "authors": "AK Chakraborty, N Sharma",
+        "conference": "2016 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 1-5",
+        "citations": 9,
+        "year": 2016
+    }, {
+        "title": "Active line flow control of power system network with FACTS devices of choice using soft computing technique",
+        "authors": "AK Chakraborty, S Majumdar, PK Chattopadhyay, C Nandi",
+        "conference": "International Journal of Computer Applications 975, 8887",
+        "citations": 9,
+        "year": 2011
+    }, {
+        "title": "Computer simulation of the influence of shading on a solar photovoltaic array",
+        "authors": "T Bhattacharya, AK Chakraborty, K Pal",
+        "conference": "International Journal of Ambient Energy 38 (5), 525-533",
+        "citations": 8,
+        "year": 2017
+    }]
+}
+
+
+
+
+
+
+{
+    "country": "india",
+    "org": "10153116334818526581",
+    "institute": "National Institute of Technology Agartala",
+    "name": "Abhijit Bhowmik",
+    "user": "1igRo6wAAAAJ",
+    "homepage": "Not Found",
+    "scholarPage": "https://scholar.google.co.in/citations?user=1igRo6wAAAAJ&hl=en",
+    "imgLink": "https://scholar.googleusercontent.com/citations?view_op=view_photo&user=1igRo6wAAAAJ&citpid=1",
+    "verifiedEmail": true,
+    "subjects": ["Composite", "Wear", "Optimization", "Stir casting", "Welding"],
+    "yearCitations": ["{\"year\": 2019, \"citations\": 1}", "{\"year\": 2020, \"citations\": 10}", "{\"year\": 2021, \"citations\": 14}"],
+    "citationsAll": "25",
+    "citations2016": "25",
+    "h-indexAll": "3",
+    "h-index2016": "3",
+    "i10-indexAll": "0",
+    "i10-index2016": "0",
+    "papers": [{
+        "title": "Effect of SiC content on mechanical and tribological properties of Al2024-SiC composites",
+        "authors": "D Dey, A Bhowmik, A Biswas",
+        "conference": "Silicon, 1-11",
+        "citations": 7,
+        "year": 2020
+    }, {
+        "title": "Comparative Study of Microstructure, Physical and Mechanical Characterization of SiC/TiB 2 Reinforced Aluminium Matrix Composite",
+        "authors": "A Bhowmik, D Dey, A Biswas",
+        "conference": "Silicon, 1-8",
+        "citations": 4,
+        "year": 2020
+    }, {
+        "title": "Tribological behaviour of aluminium-titanium diboride (Al7075-TiB2) metal matrix composites prepared by stir casting process",
+        "authors": "A Bhowmik, D Dey, A Biswas",
+        "conference": "Materials Today: Proceedings 26, 2000-2004",
+        "citations": 4,
+        "year": 2020
+    }, {
+        "title": "Wear behavior of stir casted aluminum-titanium diboride (Al2024-TiB2) composite",
+        "authors": "D Dey, A Bhowmik, A Biswas",
+        "conference": "Materials Today: Proceedings 26, 1203-1206",
+        "citations": 3,
+        "year": 2020
+    }, {
+        "title": "Investigation on wear behaviour of Al7075-SiC metal matrix composites prepared by stir casting",
+        "authors": "A Bhowmik, D Chakraborty, D Dey, A Biswas",
+        "conference": "Materials Today: Proceedings 26, 2992-2995",
+        "citations": 3,
+        "year": 2020
+    }, {
+        "title": "Evaluation of wear performance of Al2024-SiC ex-situ composites",
+        "authors": "D Dey, SK Chintada, A Bhowmik, A Biswas",
+        "conference": "Materials Today: Proceedings 26, 2996-2999",
+        "citations": 3,
+        "year": 2020
+    }, {
+        "title": "Study of Heat Generation and Its Effect During Submerged Arc Welding (SAW) on Mild Steel Plate at Zero Degree Celsius Plate Temperature",
+        "authors": "A Biswas, A Bhowmik",
+        "conference": "Materials Today: Proceedings 5 (5), 13400-13405",
+        "citations": 1,
+        "year": 2018
+    }, {
+        "title": "Dry Sliding Wear Performance of Al7075/SiC Composites by Applying Grey-Fuzzy Approach",
+        "authors": "A Bhowmik, S Dey, D Dey, A Biswas",
+        "conference": "Silicon, 1-16",
+        "citations": 0,
+        "year": 2021
+    }, {
+        "title": "Characteristics Study of Physical, Mechanical and Tribological Behaviour of SiC/TiB 2 Dispersed Aluminium Matrix Composite",
+        "authors": "A Bhowmik, D Dey, A Biswas",
+        "conference": "Silicon, 1-14",
+        "citations": 0,
+        "year": 2021
+    }, {
+        "title": "Characterization of physical and mechanical properties of aluminium based composites reinforced with titanium diboride particulates",
+        "authors": "D Dey, A Bhowmik, A Biswas",
+        "conference": "Journal of Composite Materials, 0021998320980800",
+        "citations": 0,
+        "year": 2020
+    }]
+}
