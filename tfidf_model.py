@@ -1,6 +1,7 @@
 import nltk 
 import re 
 import math
+import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity 
 from sklearn.metrics.pairwise import linear_kernel
@@ -14,20 +15,7 @@ import jsonlines
 import json
 from tqdm.notebook import tqdm
 import pickle
-
-def process_card(idx, doc):
-    return f"""
-        <div class="card">
-            <img src="{doc['imgLink']}" class="card-img-top" alt="HeadImg">
-            <div class="card-body">
-                <h5 class="card-title">{doc['name']}</h5>
-                <p class="card-text">{doc['institute']}</p>
-                <p class="card-text">{doc['subjects']}</p>
-                <a href="#" class="btn btn-primary">{doc['scholarPage']}</a>
-            </div>
-        </div>
-        """
-
+from scipy.sparse import csr_matrix
 
 def remove_string_special_characters(s):
     # removes special characters with ' '
@@ -61,23 +49,40 @@ def process_string(sentence):
     sentence = remove_stop_words(sentence)
     return sentence
 
-def process_query(query):
-    loaded_vectorizer = pickle.load(open("web_data/tfidf_vectorizer.pkl","rb"))
-    loaded_matrix = pickle.load(open("web_data/tfidf_matrix.pkl","rb"))
+def process_query(query, request_args):
+    loaded_cnt_vct = pickle.load(open("web_data/count_vectorizer.pkl", "rb"))
+    loaded_tfidf_new_matrix = pickle.load(open("web_data/tfidf_new_matrix.pkl", "rb"))
     loaded_docID = pickle.load(open("web_data/doc_id_dict.pkl", "rb"))
+
     query = process_string(query)
-    result_matrix = loaded_vectorizer.transform([query])
-    cosine_similarities = linear_kernel(result_matrix, loaded_matrix).flatten()
-    related_docs_indices = cosine_similarities.argsort()[:-1000:-1]
+
+    cnt_matrix_query = loaded_cnt_vct.transform([query])
+    cnt_matrix_query = csr_matrix.transpose(cnt_matrix_query)
+
+    result = loaded_tfidf_new_matrix * cnt_matrix_query
+    result = csr_matrix.transpose(result)
+    result_matrix = result.toarray()[0]
+    related_docs_indices = result_matrix.argsort()[::]
+
+    tfidf_scores = [result_matrix[i] for i in related_docs_indices]
+    max_tfidf_score = max(tfidf_scores)
+    tfidf_scores = [ (score/max_tfidf_score)*100 for score in tfidf_scores]
     related_results = [loaded_docID[i] for i in related_docs_indices]
-    doc_index_results = {}
+
+    doc_index_scores = {}
     for idx, result in enumerate(related_results):
-        doc_index_results[result] = idx
+        doc_index_scores[result] = tfidf_scores[idx]
+
     related_result_docs = []
     with jsonlines.open('data_india_sample.jl') as reader:
         for obj in reader:
             if obj['user'] in related_results:
-                related_result_docs.append( (doc_index_results[obj['user']], obj) )
-    related_result_docs.sort(key = lambda x: x[0])
-    # related_result_docs = [doc for idx, doc in related_result_docs]
-    return related_result_docs
+                if ("country" not in request_args) or (obj['country'] in request_args.getlist('country')):
+                    if ("institute" not in request_args) or (obj['institute'] in request_args.getlist('institute')):
+                        related_result_docs.append( (doc_index_scores[obj['user']], obj) )
+
+    related_result_docs.sort(key = lambda x: x[0], reverse=True)
+
+    docs_len = min(len(related_result_docs), 1000)
+    
+    return related_result_docs[:docs_len]

@@ -1,0 +1,6 @@
+#searhbox-container{
+    background-image: url('/static/images/science_abstract.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }

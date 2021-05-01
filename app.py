@@ -18,12 +18,14 @@ def home():
 def search_subject():
     if 'q' in request.args: 
         query = request.args['q']
-        numInEachPage = 25
+        pageSize = 1000
+        if 'pagesize' in request.args:
+            pageSize = request.args['pagesize']
         pageNum = 1
-        query_docs = process_query(query)
+        query_docs = process_query(query, request.args)
         if 'page' in request.args:
             pageNum = int(request.args['page'])
-        query_docs = query_docs[(pageNum - 1)*(numInEachPage) : (pageNum)*(numInEachPage)]
+        query_docs = query_docs[(pageNum - 1)*(pageSize) : (pageNum)*(pageSize)]
         return render_template("search_results.html", query_docs = query_docs, pageNum = pageNum)
 
 if __name__ == "__main__":

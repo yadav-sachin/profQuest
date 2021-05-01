@@ -1,11 +1,19 @@
 $(document).ready(function() { 
-    $('.selectpicker').selectpicker();
     $uncheckedSiblings = $("input:checkbox:not(:checked)").siblings("input");
     $uncheckedSiblings.fadeOut();
     $("#tfidf_slider").fadeOut();
 
     selected_countries_list = [];
+    $('.selectpicker').selectpicker();
+
 });
+
+$(document).ready(function () { 
+    $(".selectpicker").selectpicker();
+    $(".bootstrap-select").click(function () {
+         $(this).addClass("open");
+    });
+  });
 
 
 
