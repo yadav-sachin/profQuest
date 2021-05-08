@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/search_results.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/38fff33c34.js" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+  <!-- Bootstrap-Select -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+  <!-- index.js -->
+  <script src="/static/js/index.js"></script>
+
+    <title>goHigh</title>
+</head>
+
+<body>
+    <div id="searhbox-container" class="container p-2">
+        <form action="/search" class="form-inline">
+          <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-2 m-2">
+              <label for="select-country">Select Country: (Multiple)</label>
+              <select class="selectpicker" name="country" id="select-country" multiple data-live-search="true">
+                {%for country in countries %}
+                <option value="{{country}}" {%if country in request_args.getlist('country') %}selected{% endif %}data-tokens="{{country}}">{{country}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-2 m-2">
+              <label for="select-institute">Select Institute: (Multiple)</label>
+              <select class="selectpicker" name="institute" multiple data-live-search="true">
+                {%for institute in institutes %}
+                <option value="{{institute}}" {%if institute in request_args.getlist('institute') %}selected{% endif %} data-tokens="{{institute}}">{{institute}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+            <div class="form-row">
+              <div class="col-6 col-sm-4 col-lg-3 form-group mx-2">
+                <select class="form-select" name="searchType" id="searchType-input" selected="{{request_args['searchType']}}">
+                  <option value="name" {%if request_args['searchType'] == "name" %}selected{% endif %}>Search by Name</option>
+                  <option value="subject" {%if request_args['searchType'] == "subject" %}selected{% endif %}>Search by Subject</option>
+                </select>
+              </div>
+              <div class="col-11 col-sm-10 col-md-8 col-xl-4 form-group mx-2 my-1">
+                <input type="text" name="q" id="searchQuery" class="form-control" value ="{{request_args['q']}}">
+              </div>
+            </div>
+          <button class="btn btn-primary mx-2">Search</button>
+    
+          <div class="form-group mx-2 my-1 slider-container">
+            <input type="checkbox" disabled checked class="form-check-input">
+            <label for="formGroupExampleInput">Modified TF-IDF score</label>
+            <div class="col-8 mx-auto"><input type="range" class="form-range" min="1" max="10" step="1" id="tfidf_slider" value="{{request_args['tfidf__weight']}}"
+              name="tfidf__weight"></div>
+          </div>
+    
+          <!-- Activeness Over n years -->
+          <div class="form-group mx-2 my-1 slider-container">
+            <input type="checkbox" class="form-check-input additional-filter-criteria-checkbox"
+              onclick="checkpoint_change_react();" name="activeness__checkbox" {%if "activeness__checkbox" in request_args %}checked{% endif %}>
+            <label for="formGroupExampleInput">Activeness Over n years</label>
+            <input type="number" min="1" max="30" value="{{request_args['activeness__years']}}" name="activeness__years">
+            <div class="col-8 mx-auto"><input type="range" class="form-range" min="1" max="10" step="1" value="{{request_args['activeness__weight']}}" name="activeness__weight"></div>
+          </div>
+    
+          <!-- Slope of Citations -->
+          <div class="form-group mx-2 my-1 slider-container">
+            <input type="checkbox" class="form-check-input additional-filter-criteria-checkbox"
+              onclick="checkpoint_change_react();" name="slope-citations__checkbox" {%if "slope-citations__checkbox" in request_args %}checked{% endif %}>
+            <label for="formGroupExampleInput">Slope of Citations</label>
+            <div class="col-8 mx-auto"><input type="range" class="form-range" min="1" max="10" step="1" value="{{request_args['slope-citations__weight']}}" name="slope-citations__weight"></div>
+            
+          </div>
+    
+          <!-- h-index -->
+          <div class="form-group mx-2 my-1 slider-container">
+            <input type="checkbox" class="form-check-input additional-filter-criteria-checkbox"
+              onclick="checkpoint_change_react();" name="h-index__checkbox" {%if "h-index__checkbox" in request_args %}checked{% endif %}>
+            <label for="formGroupExampleInput">h-index</label>
+            
+            <div class="col-8 mx-auto"><input type="range" class="form-range" min="1" max="10" step="1" value="{{request_args['h-index__weight']}}" name="h-index__weight"></div>
+          </div>
+    
+          <!-- Institute Reputation -->
+          <div class="form-group mx-2 my-1 slider-container">
+            <input type="checkbox" class="form-check-input additional-filter-criteria-checkbox"
+              onclick="checkpoint_change_react();" name="inst-reputation__checkbox" {%if "inst-reputation__checkbox" in request_args %}checked{% endif %}>
+            <label for="formGroupExampleInput">Institute Reputation</label>
+            <div class="col-8 mx-auto"><input type="range" class="form-range" min="1" max="10" step="1" value="{{request_args['inst-reputation__weight']}}"
+              name="inst-reputation__weight"></div>
+    
+          </div>
+        </form>
+      </div>
+
+    <div class="container">
+        <div class="row">
+            {% for idx, score, doc in query_docs %}
+            <!-- <div class="card col-md-4" >
+                    <img src="{{doc['imgLink']}}" class="card-img-top" alt="HeadImg">
+                    <div class="card-body">
+                        <h5 class="card-title">{{doc['name']}}</h5>
+                        <p class="card-text">{{doc['institute']}}</p>
+                        <p class="card-text">{{" ".join(doc['subjects'])}}</p>
+                        <a href="{{doc['scholarPage']}}" class="btn btn-primary">Scholar Page</a>
+                    </div>
+                </div> -->
+
+            <div class="col-md-4">
+                <div class="card user-card m-2">
+                    <div class="card-header">
+                        <h5 class="badge bg-success text-light">#{{idx}}</h5>
+                    </div>
+                    <div class="card-block">
+                        <div class="user-image">
+                            <img src="{{doc['imgLink']}}" class="img-radius" alt="User-Profile-Image">
+                        </div>
+                        <h6 class="f-w-600 m-t-25 m-b-10">{{doc['name']}}</h6>
+                        <p class="text-muted"><a style="text-decoration:none;color:black;"
+                                href="https://scholar.google.co.in/citations?view_op=view_org&hl=en&org={{doc['org']}}">{{doc['institute']}}</a>
+                        </p>
+                        <hr>
+                        <p class="text-muted m-t-15">
+                            {% for subject_tag in doc['subjects'] %}
+                            <span class="badge bg-warning text-dark"><a style="text-decoration: none;color:black;"
+                                    href="https://scholar.google.co.in/citations?view_op=search_authors&hl=en&mauthors=label:{{"
+                                    _".join(subject_tag.split())}}">{{subject_tag}}</a></span>
+
+                            {% endfor %}
+                        </p>
+                        {%if isNameQuery %}
+                        <ul class="list-unstyled activity-leval">
+                            <div class="progress">
+                                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="{{score}}" aria-valuemin="0" aria-valuemax="100">{{score}}%</div>
+                            </div>
+                        </ul>
+                        {% endif %}
+                        <div class="bg-c-blue counter-block m-t-10 p-20">
+                            <div class="row">
+                                <div class="col-4">
+                                    <i class="fas fa-scroll"> Citations</i>
+                                    <p>{{doc['citationsAll']}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <i class="fas fa-star"> h-index</i>
+                                    <p>{{doc['h-indexAll']}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <i class="fas fa-stream"> i10-index</i>
+                                    <p>{{doc['i10-indexAll']}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p class="m-t-15 text-muted">{{" ".join(doc['subjects'])}}</p> -->
+                        <hr>
+                        <div class="row justify-content-center user-social-link">
+                            <div class="col-auto"><a target="_blank" href="{{doc['scholarPage']}}"><i
+                                        style="color:black;" class="fas fa-external-link-alt"></i> <i
+                                        style="color:black;" class="fas fa-user-graduate"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
