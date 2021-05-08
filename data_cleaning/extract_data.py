@@ -2,11 +2,11 @@ import jsonlines
 import json
 import os.path
 from scrapy import Selector 
-country = "india"
+country = "britain"
 # country = input().strip()
-list_file = open("data/input_lists/{}_completed.txt".format(country), "r")
-institute_list = set(list_file.read().splitlines())
-institute_count = {}
+# list_file = open("data/input_lists/{}_completed.txt".format(country), "r")
+# institute_list = set(list_file.read().splitlines())
+# institute_count = {}
 
 with jsonlines.open('oup_{}.jl'.format(country)) as reader:
     max_count, curr_count = 10, 1

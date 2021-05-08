@@ -1,7 +1,12 @@
 # Data
 **/*.html
 *oup*.jl
-data_india.jl
+
+
+data_*.jl
+
+#Zip files
+*.zip
 
 # Log files
 log*.txt
