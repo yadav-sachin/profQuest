@@ -31,17 +31,17 @@ def search_subject():
             pageSize = request.args['pagesize']
         pageNum = 1
         query_docs = []
-        isNameQuery = False
+        isNameSearch = False
         if request.args['searchType'] == 'subject':
             query_docs = process_query(query, request.args)
+            isNameSearch = False
         else:
             query_docs = process_name_query(query, request.args)
-            print(query_docs)
-            isNameQuery = True
+            isNameSearch = True
         if 'page' in request.args:
             pageNum = int(request.args['page'])
         query_docs = query_docs[(pageNum - 1)*(pageSize) : (pageNum)*(pageSize)]
-        return render_template("search_results.html", query_docs = query_docs, pageNum = pageNum, countries = countries_list, institutes = institutions_list, request_args = request.args, isNameQuery = isNameQuery)
+        return render_template("search_results.html", query_docs = query_docs, pageNum = pageNum, countries = countries_list, institutes = institutions_list, request_args = request.args, isNameQuery = isNameSearch)
     else:
         return redirect("/")
 
