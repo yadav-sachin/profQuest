@@ -79,7 +79,7 @@
             <input type="checkbox" class="form-check-input additional-filter-criteria-checkbox"
               onclick="checkpoint_change_react();" name="activeness__checkbox" {%if "activeness__checkbox" in request_args %}checked{% endif %}>
             <label for="formGroupExampleInput">Activeness Over n years</label>
-            <input type="number" min="1" max="30" value="{{request_args['activeness__years']}}" name="activeness__years">
+            <input type="number" min="1" max="20" value="{{request_args['activeness__years']}}" name="activeness__years">
             <div class="col-8 mx-auto"><input type="range" class="form-range" min="1" max="10" step="1" value="{{request_args['activeness__weight']}}" name="activeness__weight"></div>
           </div>
     
