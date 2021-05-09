@@ -105,6 +105,8 @@ def process_query(query, request_args):
         ranks['slope']['wt'] = user_input['slope_score']
         ranks['insti']['wt'] = user_input['insti_score']
         
+        print(ranks)
+
         #scale up 
         total_user_input_wt = 0
         for key,val in ranks.items():
@@ -137,21 +139,47 @@ def process_query(query, request_args):
         #                 ])
         return profs
 
-    def null_if_not_exists(d,x):
-        if x in d:
-            return int(d[x])
-        else:
-            return 0
-
     #generate in code using user input
+
     input_obj = dict()
     input_obj['query_string'] = request_args['q']
-    input_obj['active_yr'] = null_if_not_exists(request_args,'activeness__years')
-    input_obj['tfidf_score'] = null_if_not_exists(request_args,'tfidf__weight')
-    input_obj['active_score'] = null_if_not_exists(request_args,'activeness__weight')
-    input_obj['hindex_score'] = null_if_not_exists(request_args,'h-index__weight')
-    input_obj['slope_score'] = null_if_not_exists(request_args,'slope-citations__weight')
-    input_obj['insti_score'] = null_if_not_exists(request_args,'inst-reputation__weight')
+    # TFIDF weight
+    if 'tfidf__weight' in request_args:
+        input_obj['tfidf_score'] = int(request_args['tfidf__weight'])
+    else:
+        input_obj['tfidf_score'] = 10
+    # Activeness over the years
+    if 'activeness__checkbox' in request_args and 'activeness__years' in request_args:
+        input_obj['active_score'] = int(request_args['activeness__weight'])
+        input_obj['active_yr'] = int(request_args['activeness__years'])
+    else:
+        input_obj['active_score'] = 0
+        input_obj['active_yr'] = 5
+    # H-index
+    if 'h-index__checkbox' in request_args and 'h-index__weight' in request_args:
+        input_obj['hindex_score'] = int(request_args['h-index__weight'])
+    else:
+        input_obj['hindex_score'] = 0
+    #Slope of Citations
+    if 'slope-citations__checkbox' in request_args and 'slope-citations__weight' in request_args:
+        input_obj['slope_score'] = int(request_args['slope-citations__weight'])
+    else:
+        input_obj['slope_score'] = 0
+
+    # Institute Reputation
+    if 'inst-reputation__checkbox' in request_args and 'inst-reputation__weight' in request_args:
+        input_obj['insti_score'] = int(request_args['inst-reputation__weight'])
+    else:
+        input_obj['insti_score'] = 0
+
+    # input_obj = dict()
+    # input_obj['query_string'] = request_args['q']
+    # input_obj['active_yr'] = null_if_not_exists(request_args,'activeness__years')
+    # input_obj['tfidf_score'] = null_if_not_exists(request_args,'tfidf__weight')
+    # input_obj['active_score'] = null_if_not_exists(request_args,'activeness__weight')
+    # input_obj['hindex_score'] = null_if_not_exists(request_args,'h-index__weight')
+    # input_obj['slope_score'] = null_if_not_exists(request_args,'slope-citations__weight')
+    # input_obj['insti_score'] = null_if_not_exists(request_args,'inst-reputation__weight')
 
     related_profs = query_subject(input_obj)
     related_result_docs=[]
@@ -160,20 +188,9 @@ def process_query(query, request_args):
     for profdata in related_profs:
         if ("country" not in request_args) or (profdata[1]['country'] in request_args.getlist('country')):
             if ("institute" not in request_args) or (profdata[1]['institute'] in request_args.getlist('institute')):
-                related_result_docs.append((rank,profdata[3],profdata[1]))
+                related_result_docs.append((rank,round(profdata[3],3),profdata[1]))
                 rank+=1
 
-    # doc_index_scores = {}
-    # for idx, result in enumerate(related_results):
-    #     doc_index_scores[result] = tfidf_scores[idx]
-
-    # related_result_docs = []
-    # with jsonlines.open('data_india_sample.jl') as reader:
-    #     for obj in reader:
-    #         if obj['user'] in related_results:
-    #             if ("country" not in request_args) or (obj['country'] in request_args.getlist('country')):
-    #                 if ("institute" not in request_args) or (obj['institute'] in request_args.getlist('institute')):
-    #                     related_result_docs.append( (doc_index_scores[obj['user']], obj) )
 
     docs_len = min(len(related_result_docs),1000)
     
@@ -182,8 +199,10 @@ def process_query(query, request_args):
 
 
 
-
 def process_name_query(query, request_args):
+
+    loaded_documents = pickle.load(open("web_data/documents.pkl", "rb"))
+    loaded_prof_names = pickle.load(open("web_data/prof_names.pkl", "rb"))
 
     def get_close_matches_indexes(word, possibilities, n=10, cutoff=0.4):
     
@@ -218,32 +237,22 @@ def process_name_query(query, request_args):
         # Strip scores for the best n matches
         return [x for score, x in result]
 
-    
-    loaded_documents = pickle.load(open("web_data/documents.pkl", "rb"))
-    prof_names = []
 
-    for document in loaded_documents:
-        prof_names.append(document['name'])
-    inds = get_close_matches_indexes(query, prof_names, n=len(prof_names))
-
-    score = 100
-    diff = 99/(len(prof_names)-1)
-
+    inds = get_close_matches_indexes(query, loaded_prof_names, n=len(loaded_prof_names))
     related_result_docs=[]
 
     # tuple -> index, score, doc
     rank = 1
 
     for ind in inds:
-        related_result_docs.append((rank,score,loaded_documents[ind]))
-        score-=diff
-        rank+=1
+        if ("country" not in request_args) or (loaded_documents[ind]['country'] in request_args.getlist('country')):
+            if ("institute" not in request_args) or (loaded_documents[ind]['institute'] in request_args.getlist('institute')):
+                related_result_docs.append((rank,0,loaded_documents[ind]))
+                rank+=1
 
     docs_len = min(len(related_result_docs),1000)
     
     return related_result_docs[:docs_len]
-
-
 
 
 
