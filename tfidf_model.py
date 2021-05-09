@@ -86,3 +86,7 @@ def process_query(query, request_args):
     docs_len = min(len(related_result_docs), 1000)
     
     return related_result_docs[:docs_len]
+
+
+def process_name_query(query, request_args):
+    pass
