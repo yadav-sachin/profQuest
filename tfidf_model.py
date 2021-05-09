@@ -105,7 +105,7 @@ def process_query(query, request_args):
         ranks['slope']['wt'] = user_input['slope_score']
         ranks['insti']['wt'] = user_input['insti_score']
         
-        print(ranks)
+        # print(ranks)
 
         #scale up 
         total_user_input_wt = 0
