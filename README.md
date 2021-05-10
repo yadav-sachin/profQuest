@@ -1,42 +1,90 @@
-##
+# ProfQuest: Search Engine of Professors
+-------Edit the intro a bit-------------
+Searching for professors based on certain parameters is a problem faced by students applying for higher studies. We have devised ProfQuest, a search engine which allows users to search professors by subject of interests or specific name with filters of location and institution. A ranking algorithm encompassing factors like activeness in the recent years, growth rate of citations, institute reputation and h-index has been proposed. The user can decide the weightage given to each criteria in ranking as per personal preferences. We modify the traditional TF-IDF method to better adapt to rankings of professors based on the relevance of research papers and domain to the search query.
 
-
-### Instructions:
-1. Copy and Paste the list of Institutes in data/input_lists/{country_name}. (200 max)
-2. Run ```scrapy crawl scholars -o {output_json_lines}.jl > output.txt -a country={country} --logfile {logFile}.txt``` repetitevely.
-
-### To run
-```bash 
-scrapy crawl scholars -o oup_india.jl > output.txt -a country=india --logfile log.txt
-```
-
-- Stop when there are no more requests made by the scrapy 
-
-#### Repetively
-- Change IP address in VPN. Then rerun.
-
-
-### Example:
-- America
+------------ Add a brief comment for the files------------------------
+## File Structure
 ```bash
-scrapy crawl scholars -o oup_america.jl > output.txt -a country=america --logfile log.txt
+├── README.md
+├── app.py
+├── basic_tf_idf_new.ipynb
+├── data
+│   ├── input_lists # Contains the input list of institutions from the user for Scraper
+│   └── output_data # The scraped Output folders are stored here
+├── data_cleaning # Files for extraction  and cleaning of scraped data
+│   ├── extract_data.py
+├── data_india_sample.jl
+├── scholar_dataset
+│   ├── items.py
+│   ├── middlewares.py
+│   ├── pipelines.py
+│   ├── settings.py
+│   └── spiders
+│       └── scholars_spider.py # The main spider crawler program
+├── scrapy.cfg
+├── static
+│   ├── css
+│   │   ├── index.css
+│   │   └── search_results.css
+│   ├── images
+│   └── js
+│       └── index.js
+├── templates
+│   ├── index.html
+│   └── search_results.html
+├── tfidf_model.py
+└── web_data
 ```
 
-- Britain
+### Requirements:
+- Scrapy
+- jsonlines
+- Flask
+------------Add if anything required from your part-------------------
+------------Can we add all these requirements in requirements.txt --------------
+
+
+## Scrapoxy Configuration [Optional](Config files in Scrapoxy branch)
+### Installation:
+```
+sudo apt-get install build-essential
+sudo npm install -g scrapoxy
+pip3 install scrapoxy
+```
+### Usage:
+- Generate "accessKeyId" and "secretAccessKey", from AWS credentials. Replace the values in the `conf.json` file.
+- Run 
 ```bash
-scrapy crawl scholars -o oup_britain.jl > output.txt -a country=britain --logfile log.txt
+scrapoxy start conf.json -d   
 ```
-- When the program ends, change IP, re-run the command.
+- The GUI of Scrapoxy is accessible at: `localhost:8889/`. Password is set to "jujutsu" (by default). 
+- The region is set to Mumbai in conf.json.
+- Currently max instances are set to 3, change as per your AWS credits.
 
-- In short 
-```bash
-cat oup_temp.jl >> oup_america.jl ; rm -rf oup_temp.jl log_temp.txt; scrapy crawl scholars -o oup_temp.jl > output.txt -a country=america --logfile log_temp.txt
-```
+## Web Crawler
+1. Input to the crawler is a list of Institutions in a txt file at location ```data/input_lists/{country_name}```. Here country_name is the name of the country to which the list of the institutions belong.
+2. Run ```scrapy crawl scholars -o {output_json_lines}.jl -a country={country}``` from the main working directory. Replace output_json_lines with the desired name for output file.
+3. After this step, the scraped HTML files will be stored in ```data/output_data/{country_name}```. The name of the HTML files will be the Google Scholar ID of the profile. The details associated with these HTML files such as Institution, Country are stored in the output file as mentioned in step 2.
+
+## Extraction of Scraped Data
+1. After running the webcrawler above, the data is still stored in the HTML files.
+2. In this section, we extract the data from the HTML files and store the extracted data in json lines format.
+3. From the main directory run ```python3 data_cleaning/extract_data.py```. 
+4. In the input to the python script, give the name of the country as used in above sections.
+5. The final extracted data will be stored at ```oup_{country_name}.jl``` file in the main directory.
+
+### Data Extraction Usage Example:
+- Create a txt file as `data/input_lists/britain.txt`.
+- Run ```scrapy crawl scholars -o britain_scrap_oup.jl -a country=britain``` from the main working directory. 
+- Run ```python3 data_cleaning/extract_data.py``` from main working directory, give the input `britain` to the program.
+- The final extracted data stored in `oup_britain.jl` in main directory.
+  
+### Preprocessing the web data fror 
 
 
-### Install Requirements:
-- ```pip3 install scrapy```
 
-### After running:
-- Remove the duplicate records in the output json lines.
+### Contributors:
+- Dishank Goel (18110052)
+- Sachin Yadav (18110148)
+- Raghav Goyal (18110135)
 
