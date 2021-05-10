@@ -6,14 +6,18 @@ from w3lib.url import add_or_replace_parameters
 from scrapy.exceptions import CloseSpider
 import re 
 
-# max_persons_per_institute = 40
-max_persons_per_institute = 400 #uncomment in deploy
+# The max number of profiles for the first entry insitute = 400
+# The number of profiles extracted for each institute decreases as we move to throught the institute entries
+# The institutes list is expected to be in order of some ranking
+max_persons_per_institute = 400
+# Keep track of the completed institutes and the ones whose results were not found
 institute_remaining_count = {}
 institute_file_completed_list = []
 institute_found_list = []
 
 class ScholarsSpider(scrapy.Spider):
     name = 'scholars'
+    # Read the input files, check the already completed ones and start the process for each record
     def start_requests(self):
         institutes_namelist = ["iit bombay", "iit delhi"]
         if not os.path.isdir("data/output_data/{}".format(self.country)):
@@ -80,15 +84,8 @@ class ScholarsSpider(scrapy.Spider):
             if institute_name not in institute_found_list:
                 institute_found_list.append(institute_name)
             yield response.follow(org_link, self.parse_institute_next_page_lvl2, meta={'institute_name': response.meta['institute_name'], 'orgID': orgID})
-        # else:
-        #     print(institute_name, institute_remaining_count[institute_name])
-        #     if institute_name not in institute_file_completed_list:
-        #         f = open('data/input_lists/{}_not_found.txt'.format(self.country), 'a')
-        #         f.write(institute_name + "\n")
-        #         f.close()
-        #         institute_file_completed_list.append(institute_name)
 
-    # Currently at a page, which has the list of the faculties
+    # Currently at the institute page, which has the list of the faculties
     def parse_institute_next_page_lvl2(self, response):
         # https://scholar.google.com/citations?view_op=view_org&hl=en&org=15559271020991466530&after_author=s5UKAF3A__8J
         institute_name = response.meta['institute_name']
@@ -119,7 +116,7 @@ class ScholarsSpider(scrapy.Spider):
                 f.close()
                 institute_file_completed_list.append(institute_name)
 
-    # On a person's page, ready to download
+    # On a person's page, ready to download the HTML file and related data in 
     def download_person_page(self, response):
         userID = parse_qs(urlparse(response.url).query)['user'][0]
         filename = f'data/output_data/{self.country}/{userID}.html'
