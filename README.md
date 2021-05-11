@@ -80,6 +80,7 @@ scrapoxy start conf.json -d
 - Currently max instances are set to 3, change as per your AWS credits.
 
 ![](assets/scrapoxy_image.PNG)
+
 <br>
 
 ## Web Crawler
