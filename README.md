@@ -98,7 +98,8 @@ scrapoxy start conf.json -d
 - The final extracted data stored in `oup_britain.jl` in main directory.
   
 ### Preprocessing the extracted data for efficient querying
-1. The `hello.json`
+1. Once we have the extracted data in `*.jl` file, it will be preprocessed using the `Search_Engine_Complete_Algoriithm.ipynb` jupyter notebook.
+2. Replace the name of the `.jl` file present in the notebook with the name of your .j 
 
 
 
