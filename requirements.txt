@@ -1,0 +1,10 @@
+scrapy
+jsonlines
+flask
+nltk
+sklearn
+pickle
+scipy
+difflib
+heapq
+numpy

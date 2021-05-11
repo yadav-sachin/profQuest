@@ -1,19 +1,19 @@
 # ProfQuest: Search Engine of Professors
--------Edit the intro a bit-------------
+
 Searching for professors based on certain parameters is a problem faced by students applying for higher studies. We have devised ProfQuest, a search engine which allows users to search professors by subject of interests or specific name with filters of location and institution. A ranking algorithm encompassing factors like activeness in the recent years, growth rate of citations, institute reputation and h-index has been proposed. The user can decide the weightage given to each criteria in ranking as per personal preferences. We modify the traditional TF-IDF method to better adapt to rankings of professors based on the relevance of research papers and domain to the search query.
 
------------- Add a brief comment for the files------------------------
+
 ## File Structure
 ```bash
 ├── README.md
 ├── app.py
-├── basic_tf_idf_new.ipynb
+├── Search_Engine_Complete_Algoriithm.ipynb
 ├── data
 │   ├── input_lists # Contains the input list of institutions from the user for Scraper
 │   └── output_data # The scraped Output folders are stored here
 ├── data_cleaning # Files for extraction  and cleaning of scraped data
 │   ├── extract_data.py
-├── data_india_sample.jl
+├── data_india_sample.jl # Contains a sample of the extracted relevant information from the google scholar pages of the professors
 ├── scholar_dataset
 │   ├── items.py
 │   ├── middlewares.py
@@ -32,16 +32,34 @@ Searching for professors based on certain parameters is a problem faced by stude
 ├── templates
 │   ├── index.html
 │   └── search_results.html
-├── tfidf_model.py
-└── web_data
+├── requirements.txt # Contains names of python packages needed for running code
+├── tfidf_model.py # Contains functions which process name and subject queries
+└── web_data # Contains pickled files generated after preprocessing dataset
+    ├── america_institutes.txt
+    ├── britain_institutes.txt
+    ├── count_vectorizer.pkl
+    ├── countries_list.txt
+    ├── doc_id_dict.pkl
+    ├── documents.pkl
+    ├── india_institutes.txt
+    ├── mat_activeness.pkl
+    ├── prof_names.pkl
+    ├── ranking_metrics.pkl
+    └── tfidf_new_matrix.pkl
 ```
 
+
 ### Requirements:
-- Scrapy
+- scrapy
 - jsonlines
-- Flask
-------------Add if anything required from your part-------------------
-------------Can we add all these requirements in requirements.txt --------------
+- flask
+- nltk
+- sklearn
+- pickle
+- scipy
+- difflib
+- heapq
+- numpy
 
 
 ## Scrapoxy Configuration [Optional](Config files in Scrapoxy branch)
@@ -79,7 +97,7 @@ scrapoxy start conf.json -d
 - Run ```python3 data_cleaning/extract_data.py``` from main working directory, give the input `britain` to the program.
 - The final extracted data stored in `oup_britain.jl` in main directory.
   
-### Preprocessing the web data fror 
+### Preprocessing the extracted data for 
 
 
 
