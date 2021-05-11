@@ -7,7 +7,7 @@ Searching for professors based on certain parameters is a problem faced by stude
 ```bash
 ├── README.md
 ├── app.py
-├── Search_Engine_Complete_Algoriithm.ipynb
+├── Search_Engine_Complete_Algoriithm.ipynb # File which preprocesses the extracted data and stores it in pickle format for faster querying
 ├── data
 │   ├── input_lists # Contains the input list of institutions from the user for Scraper
 │   └── output_data # The scraped Output folders are stored here
@@ -97,7 +97,8 @@ scrapoxy start conf.json -d
 - Run ```python3 data_cleaning/extract_data.py``` from main working directory, give the input `britain` to the program.
 - The final extracted data stored in `oup_britain.jl` in main directory.
   
-### Preprocessing the extracted data for 
+### Preprocessing the extracted data for efficient querying
+1. The `hello.json`
 
 
 
