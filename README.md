@@ -97,9 +97,10 @@ scrapoxy start conf.json -d
 - Run ```python3 data_cleaning/extract_data.py``` from main working directory, give the input `britain` to the program.
 - The final extracted data stored in `oup_britain.jl` in main directory.
   
-### Preprocessing the extracted data for efficient querying
-1. Once we have the extracted data in `*.jl` file, it will be preprocessed using the `Search_Engine_Complete_Algoriithm.ipynb` jupyter notebook.
-2. Replace the name of the `.jl` file present in the notebook with the name of your .j 
+## Preprocessing the extracted data for efficient querying
+1. Once we have the extracted data in a `.jl` file, it will be preprocessed using the `Search_Engine_Complete_Algorithm.ipynb` jupyter notebook.
+2. Replace the name of the `.jl` file present in the notebook with the name of your `.jl` file.
+3. Run each cell of the notebook step by step. This will create several `.pkl` files in the `web_data` folder which will be used later for querying. 
 
 
 
