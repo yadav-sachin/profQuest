@@ -86,9 +86,11 @@ scrapoxy start conf.json -d
 1. Input to the crawler is a list of Institutions in a txt file at location ```data/input_lists/{country_name}```. Here country_name is the name of the country to which the list of the institutions belong.
 2. Run ```scrapy crawl scholars -o {output_json_lines}.jl -a country={country}``` from the main working directory. Replace output_json_lines with the desired name for output file.
 3. After this step, the scraped HTML files will be stored in ```data/output_data/{country_name}```. The name of the HTML files will be the Google Scholar ID of the profile. The details associated with these HTML files such as Institution, Country are stored in the output file as mentioned in step 2.
+<br>
 ![](assets/crawling_methodology.png)
 
 <br>
+
 ## Extraction of Scraped Data
 1. After running the webcrawler above, the data is still stored in the HTML files.
 2. In this section, we extract the data from the HTML files and store the extracted data in json lines format.
